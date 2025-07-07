@@ -1,7 +1,7 @@
 #################################################
 #                                               #
 #       It like a wordly but with colors!       #
-#       Made by Dat404(Daxya) v=0.0.1           #
+#       Made by Dat404(Daxya) v=0.0.2           #
 #                                               #
 #################################################
 
@@ -96,11 +96,18 @@ def on_key_press(event):
 
 
 root = Tk()
-root.geometry("256x256")
+
+window_size = 256
+screen_width = root.winfo_screenwidth()
+screen_height = root.winfo_screenheight()
+
+root.geometry(f"{window_size}x{window_size}+{(screen_width // 2) - (window_size // 2)}+{(screen_height // 2) - (window_size // 2)}")
+root.title("KULUR!")
 root.resizable(False,False)
+root.configure(bg="black")
 
 root.bind("<Key>", on_key_press)
-canvas = Canvas(root, width=250, height=250)
+canvas = Canvas(root, width=window_size, height=window_size)
 canvas.pack()
 
 img = Image.open("images/overlays/game_overlay.png").convert("RGBA")
